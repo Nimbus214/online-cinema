@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message UserRequest {
+    string username = 1;
+    string password = 2;
+}
+
+enum Status {
+    NOT_EXIST = 0;
+    EXIST = 1;
+    INCORRECT_PASSWORD = 2;
+}
+
+message ExistRequest {
+    Status status = 1;
+}
+
+service Users {
+    rpc UserExist (UserRequest) returns (ExistRequest);
+}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ film.title }}</h1>
+    <p>{{ film.small_description }}</p>
+    <p>{{ film.description }}</p>
+    <form action="" method="post" novalidate>
+        {{ form.marks.label }} {{ form.marks }}<br>
+        {{ form.submit() }}
+    </form>
+{% endblock%}

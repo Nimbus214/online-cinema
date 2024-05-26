@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+
+enum FilmGenre {
+    ALL       = 0;
+    COMEDY    = 1;
+    DETECTIVE = 2;
+    THRILLER  = 3;
+    FANTASTIC = 4;
+    HORRORS   = 5;
+    DRAMA     = 6;
+}
+
+
+message RecommendationRequest {
+    FilmGenre category    = 1;
+}
+
+message Film {
+    int32              id                = 1;
+    string             title             = 2;
+    string             small_description = 3;
+    string             description       = 4; 
+    repeated FilmGenre categoryes        = 5;
+}
+
+message FilmId {
+    int32 id = 1;
+}
+
+message RecommendationResponse {
+    repeated Film recommendations = 1;
+}
+
+service Recommendations {
+    rpc Recommend (RecommendationRequest) returns (RecommendationResponse);
+    rpc GetFilm   (FilmId)                returns (Film);
+}

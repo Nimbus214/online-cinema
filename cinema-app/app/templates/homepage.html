@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Список фильмов</h1>
+    <ul>
+    {% for film in recommendations %}
+        <a href="{{ url_for('render_film', id=film.id) }}">{{ film.title }}</a>
+        <p>{{ film.small_description }}</p>
+    {% endfor %}
+    </ul>
+{% endblock %}
